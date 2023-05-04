@@ -14,20 +14,20 @@ public class IDShortener {
     };
 
     public String getValue(int value) {
-        List<String> vigecimalList = new ArrayList<>();
-        String vigecimalValue = "";
+        List<String> base62List = new ArrayList<>();
+        String base62Value = "";
         int nextValue;
         do {
             nextValue = value / availableChars.length;
             int remainder = value % availableChars.length;
-            vigecimalList.add(Character.toString(availableChars[remainder]));
+            base62List.add(Character.toString(availableChars[remainder]));
             value = nextValue;
         } while (value > 0);
-        Collections.reverse(vigecimalList);
-        for (String symbol : vigecimalList) {
-            vigecimalValue = vigecimalValue.concat(symbol);
+        Collections.reverse(base62List);
+        for (String symbol : base62List) {
+            base62Value = base62Value.concat(symbol);
         }
-        return vigecimalValue;
+        return base62Value;
     }
 
     public int getInt(String value) {
